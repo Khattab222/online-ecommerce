@@ -50,6 +50,10 @@ app.use(async (req,res,next) => {
     //connect to DB
     connectDB()
     //Setup API Routing 
+    app.get('/',(req,res,next) => {
+      return res.status(200).json({message:'welcome to our e-commerce :'})
+    }
+    )
     app.use(`/auth`, Routers.authRouter)
     app.use(`/user`, Routers.userRouter)
     app.use(`/product`, Routers.productRouter)
@@ -62,7 +66,7 @@ app.use(async (req,res,next) => {
     app.use(`/brand`, Routers.branRouter)
     // in-valid routings
     app.all('*', (req, res, next) => {
-        res.send("In-valid Routing Plz check url  or  method")
+        res.status(404).send("In-valid Routing Plz check url  or  method")
     })
 
     // fail response

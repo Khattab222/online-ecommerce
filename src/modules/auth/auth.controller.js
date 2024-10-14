@@ -19,7 +19,6 @@ export const signup = async (req, res, next) => {
           phone,
           email,
           password,
-          DOB
         });
         const token = generateToken({ payload: { id: newUser._id } });
      
